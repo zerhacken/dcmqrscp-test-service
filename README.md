@@ -19,7 +19,7 @@ rcp@radon findscu -v -S localhost 5678 --aetitle SCP --call STORAGE -k QueryRetr
 rcp@radon movescu -v -S -aec STORAGE -aet SCP -aem SCU --port 5679 localhost 5678 -od temp -k QueryRetrieveLevel=STUDY -k StudyInstanceUID=072495.0449  
 
 ## Related
-* [dcmtk] (http://dicom.offis.de/dcmtk.php.en) - DCMTK toolkit
+* [dcmtk](http://dicom.offis.de/dcmtk.php.en) - DCMTK toolkit
 * [dcmqrscp](http://support.dcmtk.org/docs/dcmqrscp.html) - dcmqrscp
 * [dcmqrscp config](http://support.dcmtk.org/docs/file_dcmqrset.html) - config of dcmqrscp
 * [findscu](http://support.dcmtk.org/docs/findscu.html) - findscu
