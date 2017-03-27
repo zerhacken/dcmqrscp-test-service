@@ -18,6 +18,9 @@ rcp@radon findscu -v -S localhost 5678 --aetitle SCP --call STORAGE -k QueryRetr
 ## retrieve StudyInstanceUID=072495.0449
 rcp@radon movescu -v -S -aec STORAGE -aet SCP -aem SCU --port 5679 localhost 5678 -od temp -k QueryRetrieveLevel=STUDY -k StudyInstanceUID=072495.0449  
 
+## TODO
+use [wlmscpfs](http://support.dcmtk.org/docs/wlmscpfs.html) to create a worklist server.  
+
 ## Related
 * [dcmtk](http://dicom.offis.de/dcmtk.php.en) - DCMTK toolkit
 * [dcmqrscp](http://support.dcmtk.org/docs/dcmqrscp.html) - dcmqrscp
