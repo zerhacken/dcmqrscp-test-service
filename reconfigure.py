@@ -74,7 +74,7 @@ def main():
     a.start()
 
     # Delayed background upload of files in sample folder.
-    s = Timer(3.0, wlmscpfs)
+    s = Timer(3.0, sample)
     s.start()
 
 if __name__ == "__main__":
