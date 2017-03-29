@@ -37,11 +37,21 @@ def dcmtkBinaryFolder():
 def storageFolder():
     return "db/storage"
 
-def transferSampleFiles():
+def sample():
     # storescu -v --aetitle SCP --call STORAGE localhost 5678 sample/mono2.dcm
     for filename in os.listdir("sample"):
         if filename.endswith(".dcm"):
             subprocess.call([dcmtkBinaryFolder() + "/" + "storescu", "-v", "--aetitle", "SCP", "--call", "STORAGE", "localhost", "5678", "sample/" + filename])
+
+def wlmscpfs():
+    # wlmscpfs -v -dfp worklist 5680
+    subprocess.call([dcmtkBinaryFolder() + "/" + "wlmscpfs", "-v", "-dfp", "worklist", "5680"])
+
+def dcmqrscp():
+    # dcmqrscp --log-level trace --config db/dcmqrscp.cfg
+    # win32 temp/dcmtk-3.6.0-win32-i386/bin
+    # macOS temp/dcmtk-3.6.0-mac-i686-dynamic/bin
+    subprocess.call([dcmtkBinaryFolder() + "/" + "dcmqrscp", "--config", "db/dcmqrscp.cfg"])
 
 def main():
     # Cleanup storage
@@ -55,14 +65,17 @@ def main():
 
     os.environ["DCMDICTPATH"] = os.getcwd() + "/" + package.folder + "/share/dcmtk/dicom.dic"
 
-    # Delayed background upload of files in sample folder.
-    t = Timer(3.0, transferSampleFiles)
-    t.start()
+    # worklist
+    w = Timer(0.0, wlmscpfs)
+    w.start()
 
-    # dcmqrscp --log-level trace --config db/dcmqrscp.cfg
-    # win32 temp/dcmtk-3.6.0-win32-i386/bin
-    # macOS temp/dcmtk-3.6.0-mac-i686-dynamic/bin
-    subprocess.call([package.folder + "/bin/" + "dcmqrscp", "--config", "db/dcmqrscp.cfg"])
+    # archive
+    a = Timer(0.0, dcmqrscp)
+    a.start()
+
+    # Delayed background upload of files in sample folder.
+    s = Timer(3.0, wlmscpfs)
+    s.start()
 
 if __name__ == "__main__":
     main()

@@ -18,13 +18,19 @@ class TemporaryPackage(object):
         self._unpack(filename)
     def _unpack(self, filename):
         if sys.platform == "win32":
-            with zipfile.ZipFile(filename, "r") as z:
-                z.extractall("temp")
+            self._unpack_zip(filename)
         else:
-            with tarfile.open(filename) as tar:
-                self._folder = "temp/" + tar.getmembers()[0].name
-                if os.path.exists(self._folder) != True:
-                    tar.extractall("temp")
+            self._unpack_tar(filename)
+    def _unpack_zip(self, filename):
+        with zipfile.ZipFile(filename, "r") as z:
+            self._folder = "temp/" + z.infolist()[0].filename
+            if os.path.exists(self._folder) != True:
+                z.extractall("temp")
+    def _unpack_tar(self, filename):
+        with tarfile.open(filename) as tar:
+            self._folder = "temp/" + tar.getmembers()[0].name
+            if os.path.exists(self._folder) != True:
+                tar.extractall("temp")
     @property
     def url(self):
         return self._url

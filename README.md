@@ -9,7 +9,7 @@ against a *local* repository.
 rcp@radon dcmqrscp --log-level trace --config db/dcmqrscp.cfg  
 rcp@radon echoscu -d localhost 5678 -aec STORAGE  
 
-## send redmond.dcm to SCP
+## send mono2.dcm to SCP
 rcp@radon storescu -v --aetitle SCP --call STORAGE localhost 5678 sample/mono2.dcm  
 
 ## query SCP
@@ -20,6 +20,18 @@ rcp@radon movescu -v -S -aec STORAGE -aet SCP -aem SCU --port 5679 localhost 567
 
 ## TODO
 use [wlmscpfs](http://support.dcmtk.org/docs/wlmscpfs.html) to create a worklist server.  
+
+### worklist database config
+DCMTK\dcmwlm\data\wlistdb\OFFIS
+rcp@radon dump2dcm wklist1.dump wklist1.wl
+DCMTK\dcmwlm\data\wlistqry
+rcp@radon dump2dcm wlistqry0.dump wlistqry0.dcm
+
+### start worklist service
+wlmscpfs.exe -v -dfp worklist 5680
+
+### *query*
+findscu -v --call OFFIS localhost 5680 wlistqry0.dcm
 
 ## Related
 * [dcmtk](http://dicom.offis.de/dcmtk.php.en) - DCMTK toolkit
