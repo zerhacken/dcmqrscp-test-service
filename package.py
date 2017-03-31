@@ -12,7 +12,8 @@ class TemporaryPackage(object):
         # On-demand download.
         if os.path.isfile(filename) != True:
             with open(filename,'wb') as f:
-                f.write(urllib2.urlopen(url + "/"+ filename).read())
+                response = urllib2.urlopen(url + "/"+ filename)
+                f.write(response.read())
                 f.close()
         # On-demand unpack.
         self._unpack(filename)

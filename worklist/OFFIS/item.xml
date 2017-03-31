@@ -11,23 +11,23 @@
 </meta-header>
 <data-set xfer="1.2.840.10008.1.2.1" name="Little Endian Explicit">
 <element tag="0008,0005" vr="CS" vm="1" len="10" name="SpecificCharacterSet">ISO_IR 100</element>
-<element tag="0008,0050" vr="SH" vm="1" len="6" name="AccessionNumber">00000</element>
-<element tag="0010,0010" vr="PN" vm="1" len="16" name="PatientName">VIVALDI^ANTONIO</element>
-<element tag="0010,0020" vr="LO" vm="1" len="8" name="PatientID">AV35674</element>
-<element tag="0010,0030" vr="DA" vm="1" len="8" name="PatientBirthDate">16780304</element>
+<element tag="0008,0050" vr="SH" vm="1" len="6" name="AccessionNumber">1234</element>
+<element tag="0010,0010" vr="PN" vm="1" len="16" name="PatientName">PEDERSEN^RASMUS</element>
+<element tag="0010,0020" vr="LO" vm="1" len="8" name="PatientID">230179</element>
+<element tag="0010,0030" vr="DA" vm="1" len="8" name="PatientBirthDate">19790123</element>
 <element tag="0010,0040" vr="CS" vm="1" len="2" name="PatientSex">M</element>
-<element tag="0010,2000" vr="LO" vm="1" len="10" name="MedicalAlerts">METASTASIS</element>
-<element tag="0010,2110" vr="LO" vm="1" len="6" name="Allergies">TANTAL</element>
+<element tag="0010,2000" vr="LO" vm="1" len="10" name="MedicalAlerts">hacksager</element>
+<element tag="0010,2110" vr="LO" vm="1" len="6" name="Allergies">java</element>
 <element tag="0020,000d" vr="UI" vm="1" len="26" name="StudyInstanceUID">1.2.276.0.7230010.3.2.101</element>
-<element tag="0032,1032" vr="PN" vm="1" len="6" name="RequestingPhysician">SMITH</element>
-<element tag="0032,1060" vr="LO" vm="1" len="6" name="RequestedProcedureDescription">EXAM6</element>
+<element tag="0032,1032" vr="PN" vm="1" len="6" name="RequestingPhysician">smith</element>
+<element tag="0032,1060" vr="LO" vm="1" len="6" name="RequestedProcedureDescription">hack</element>
 <sequence tag="0040,0100" vr="SQ" card="1" len="176" name="ScheduledProcedureStepSequence">
 <item card="12" len="168">
 <element tag="0008,0060" vr="CS" vm="1" len="2" name="Modality">MR</element>
 <element tag="0032,1070" vr="LO" vm="1" len="12" name="RequestedContrastAgent">BARIUMSULFAT</element>
 <element tag="0040,0001" vr="AE" vm="2" len="10" name="ScheduledStationAETitle">AA32\AA33</element>
-<element tag="0040,0002" vr="DA" vm="1" len="8" name="ScheduledProcedureStepStartDate">19951015</element>
-<element tag="0040,0003" vr="TM" vm="1" len="6" name="ScheduledProcedureStepStartTime">085607</element>
+<element tag="0040,0002" vr="DA" vm="1" len="8" name="ScheduledProcedureStepStartDate">20170330</element>
+<element tag="0040,0003" vr="TM" vm="1" len="6" name="ScheduledProcedureStepStartTime">100000</element>
 <element tag="0040,0006" vr="PN" vm="1" len="8" name="ScheduledPerformingPhysicianName">JOHNSON</element>
 <element tag="0040,0007" vr="LO" vm="1" len="6" name="ScheduledProcedureStepDescription">EXAM74</element>
 <element tag="0040,0009" vr="SH" vm="1" len="8" name="ScheduledProcedureStepID">SPD3445</element>

@@ -37,11 +37,22 @@ def dcmtkBinaryFolder():
 def storageFolder():
     return "db/storage"
 
+def worklistFolder():
+    return "worklist/OFFIS"
+
 def sample():
     # storescu -v --aetitle SCP --call STORAGE localhost 5678 sample/mono2.dcm
     for filename in os.listdir("sample"):
         if filename.endswith(".dcm"):
             subprocess.call([dcmtkBinaryFolder() + "/" + "storescu", "-v", "--aetitle", "SCP", "--call", "STORAGE", "localhost", "5678", "sample/" + filename])
+
+def worklist():
+    # Generate
+    for filename in os.listdir(worklistFolder()):
+        if filename.endswith(".xml"):
+            src = worklistFolder() + "/" + filename
+            dst = worklistFolder() + "/" + os.path.splitext(filename)[0] + ".wl"
+            subprocess.call([dcmtkBinaryFolder() + "/" + "xml2dcm", src, dst])
 
 def wlmscpfs():
     # wlmscpfs -v -dfp worklist 5680
@@ -62,7 +73,6 @@ def main():
 
     # local install DCMTK binaries
     package = TemporaryPackage(dcmtkURL() + dcmtkPackage())
-
     os.environ["DCMDICTPATH"] = os.getcwd() + "/" + package.folder + "/share/dcmtk/dicom.dic"
 
     # worklist
@@ -76,6 +86,9 @@ def main():
     # Delayed background upload of files in sample folder.
     s = Timer(3.0, sample)
     s.start()
+
+    ws = Timer(3.0, worklist)
+    ws.start()
 
 if __name__ == "__main__":
     main()
