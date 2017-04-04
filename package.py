@@ -28,7 +28,7 @@ class TemporaryPackage(object):
             if os.path.exists(self._folder) != True:
                 z.extractall("temp")
     def _unpack_tar(self, filename):
-        with tarfile.open(filename) as tar:
+        with tarfile.open(filename, "r") as tar:
             self._folder = "temp/" + tar.getmembers()[0].name
             if os.path.exists(self._folder) != True:
                 tar.extractall("temp")
