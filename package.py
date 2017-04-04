@@ -10,13 +10,13 @@ class TemporaryPackage(object):
         self._install(self.url, self.filename)
     def _install(self, url, filename):
         # On-demand download.
-        if os.path.isfile(filename) != True:
-            with open(filename,'wb') as f:
+        if os.path.isfile("temp/" + filename) != True:
+            with open("temp/" + filename,'wb') as f:
                 response = urllib2.urlopen(url + "/"+ filename)
                 f.write(response.read())
                 f.close()
         # On-demand unpack.
-        self._unpack(filename)
+        self._unpack("temp/" + filename)
     def _unpack(self, filename):
         if sys.platform == "win32":
             self._unpack_zip(filename)
